@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pendulum Drawing</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script src="pro.js"></script>
+  <style>
+ #uiContainer {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      z-index: 100;
+      background: #ffffff;
+      padding: 10px;
+      border: 1px solid #cccccc;
+      border-radius: 4px;
+    }
+    .control {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+    <div id="uiContainer">
+        <textarea id="textInput" rows="4" cols="50" placeholder="Enter text here"></textarea><br>
+        <button onclick="insertText()">Insert Text</button>
+        <select id="shapeSelect" class="control">
+          <option value="Circle">Circle</option>
+          <option value="Square">Square</option>
+        </select>
+        <input type="color" id="colorPicker" class="control" value="#ff0000">
+        <button onclick="clearCanvas()" class="control">Clear Canvas</button>
+        <div id="additionalText" style="display: none; margin-top: 10px;">
+          Additional text content goes here.
+        </div>
+      </div>
+
+
+</body>
+</html>
