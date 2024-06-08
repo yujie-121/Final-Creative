@@ -87,6 +87,7 @@ class Shape {
     this.resolution = resolution;
     this.pendulum = new Pendulum(this.lineLength, joints);
     this.shapeType = document.getElementById('shapeSelect').value;
+    this.size = mathRandomInt(50, 150); // Random size between 50 and 150
   }
 
   addPos(x, y) {
@@ -98,9 +99,9 @@ class Shape {
     stroke(colour_rgb_alpha('#000000', 10, 100));
     if (showPath) {
       if (this.shapeType === 'Circle') {
-        ellipse(this.shapePath[0].x, this.shapePath[0].y, this.lineLength, this.lineLength);
+        ellipse(this.shapePath[0].x, this.shapePath[0].y, this.size, this.size);
       } else if (this.shapeType === 'Square') {
-        rect(this.shapePath[0].x - this.lineLength / 2, this.shapePath[0].y - this.lineLength / 2, this.lineLength, this.lineLength);
+        rect(this.shapePath[0].x - this.size / 2, this.shapePath[0].y - this.size / 2, this.size, this.size);
       }
     }
 
@@ -209,6 +210,7 @@ class Pendulum {
       pendulumArm.update(heading);
     }
   }
+
   getTrail(offset, pendulumTrailPaths = []) {
     offset = p5.Vector.add(offset, this.end);
     for (let pendulumArm of this.pendulumArms) {
