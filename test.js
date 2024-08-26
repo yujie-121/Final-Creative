@@ -17,6 +17,13 @@ function mathRandomInt(a, b) {
   return Math.floor(Math.random() * (b - a + 1) + a);
 }
 
+function clearCanvas() {
+    background(255, 255, 255);  
+    shapes = [];  // Reset the shapes array
+    newShape = null;  // Clear any new shape being drawn
+    isTextInserted = false;  // Reset the text inserted flag
+  }
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   background(255, 255, 255);
@@ -56,21 +63,21 @@ function insertText() {
 }
 
 function draw() {
-  if (!isTextInserted) {
-    return; // Exit draw() if no text is inserted
-  }
-
-  background('#ffffff');
-  for (let shape of shapes) {
-    shape.draw();
-    shape.update();
-  }
-  if (newShape) {
-    newShape.addPos(mouseX, mouseY);
-    newShape.draw();
-    newShape.update();
-  }
-}
+    if (!isTextInserted) {
+      return; // Exit draw() if no text is inserted or if the canvas is cleared
+    }
+  
+    background('#ffffff'); // Clears the background before redrawing
+    for (let shape of shapes) {
+      shape.draw();
+      shape.update();
+    }
+    if (newShape) {
+      newShape.addPos(mouseX, mouseY);
+      newShape.draw();
+      newShape.update();
+    }
+  }  
 
 class Shape {
   constructor(pendulumPathColor) {
